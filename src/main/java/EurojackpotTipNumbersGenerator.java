@@ -1,8 +1,8 @@
 import java.util.Set;
 
 public class EurojackpotTipNumbersGenerator extends TipNumbersGenerator {
-    private static final int MIN_EUROJACKPOT_5_FROM_50 = 1;
-    private static final int MAX_EUROJACKPOT_5_FROM_50 = 50;
+    protected static final int MIN_EUROJACKPOT_5_FROM_50 = 1;
+    protected static final int MAX_EUROJACKPOT_5_FROM_50 = 50;
     private static final int MIN_EUROJACKPOT_2_FROM_10 = 1;
     private static final int MAX_EUROJACKPOT_2_FROM_10 = 10;
     @Override

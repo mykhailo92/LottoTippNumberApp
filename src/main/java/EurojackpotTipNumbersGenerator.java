@@ -17,12 +17,12 @@ public class EurojackpotTipNumbersGenerator extends TipNumbersGenerator {
     /**
      * The minimum value for generating 2 numbers out of 10 in Eurojackpot.
      */
-    private static final int MIN_EUROJACKPOT_2_FROM_10 = 1;
+    protected static final int MIN_EUROJACKPOT_2_FROM_10 = 1;
 
     /**
      * The maximum value for generating 2 numbers out of 10 in Eurojackpot.
      */
-    private static final int MAX_EUROJACKPOT_2_FROM_10 = 10;
+    protected static final int MAX_EUROJACKPOT_2_FROM_10 = 10;
 
     /**
      * Generates an array of Eurojackpot lottery numbers.

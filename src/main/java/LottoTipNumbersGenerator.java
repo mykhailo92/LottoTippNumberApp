@@ -7,12 +7,12 @@ public class LottoTipNumbersGenerator extends TipNumbersGenerator {
     /**
      * The minimum value for generating 6 numbers out of 49 in Lotto.
      */
-    private static final int MIN_LOTTO_6_FROM_49 = 1;
+    protected static final int MIN_LOTTO_6_FROM_49 = 1;
 
     /**
      * The maximum value for generating 6 numbers out of 49 in Lotto.
      */
-    private static final int MAX_LOTTO_6_FROM_49 = 49;
+    protected static final int MAX_LOTTO_6_FROM_49 = 49;
 
     /**
      * Generates an array of Lotto lottery numbers.

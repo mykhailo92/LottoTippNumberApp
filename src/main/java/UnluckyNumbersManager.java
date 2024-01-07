@@ -8,7 +8,7 @@ import java.util.*;
 public class UnluckyNumbersManager {
 
     private static final int MAX_UNLUCKY_NUMBERS = 6;
-    private static final String UNLUCKY_NUMBERS_FILE_PATH = "unluckyNumbers.txt";
+    public static final String UNLUCKY_NUMBERS_FILE_PATH = "unluckyNumbers.txt";
 
     /**
      * Sets new unlucky numbers based on user input.
@@ -91,7 +91,7 @@ public class UnluckyNumbersManager {
      *
      * @param unluckyNumbers Set of unlucky numbers to save.
      */
-    private static void saveUnluckyNumbersToFile(Set<Integer> unluckyNumbers) {
+    public static void saveUnluckyNumbersToFile(Set<Integer> unluckyNumbers) {
         List<Integer> sortedUnluckyNumbers = new ArrayList<>(unluckyNumbers);
         Collections.sort(sortedUnluckyNumbers);
 

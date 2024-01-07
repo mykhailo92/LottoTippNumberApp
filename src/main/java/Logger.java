@@ -6,7 +6,7 @@ import java.io.IOException;
  */
 public class Logger {
 
-    private static final String LOG_FILE_PATH = "error.log";
+    public static final String LOG_FILE_PATH = "error.log";
 
     /**
      * Logs an error message to a log file.

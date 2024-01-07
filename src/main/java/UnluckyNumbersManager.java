@@ -1,14 +1,21 @@
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
+/**
+ * Manages the operations related to unlucky numbers.
+ */
 public class UnluckyNumbersManager {
 
     private static final int MAX_UNLUCKY_NUMBERS = 6;
     private static final String UNLUCKY_NUMBERS_FILE_PATH = "unluckyNumbers.txt";
 
+    /**
+     * Sets new unlucky numbers based on user input.
+     *
+     * @param unluckyNumbers Set of current unlucky numbers.
+     * @param scanner        Scanner for user input.
+     */
     public static void setNewUnluckyNumbers(Set<Integer> unluckyNumbers, Scanner scanner) {
         String response = "";
 
@@ -30,8 +37,7 @@ public class UnluckyNumbersManager {
                                 EurojackpotTipNumbersGenerator.MAX_EUROJACKPOT_5_FROM_50;
                         Logger.logError(errorMessage);
                         System.out.println(errorMessage);
-
-                        System.exit(1);
+                        break;
                     }
 
                     if (unluckyNumbers.size() >= MAX_UNLUCKY_NUMBERS) {
@@ -42,24 +48,68 @@ public class UnluckyNumbersManager {
 
                 } catch (NumberFormatException e) {
                     Logger.logError("Ungültige Zahleneingabe: " + e.getMessage());
-                    System.exit(1);
+                    break;
                 }
             }
         }
         saveUnluckyNumbersToFile(unluckyNumbers);
     }
 
+    /**
+     * Deletes specified unlucky numbers based on user input.
+     *
+     * @param unluckyNumbers Set of current unlucky numbers.
+     * @param scanner        Scanner for user input.
+     */
+    public static void deleteUnluckyNumbers(Set<Integer> unluckyNumbers, Scanner scanner) {
+        String response = "";
+
+        while (!"Ja".equalsIgnoreCase(response) && !"Nein".equalsIgnoreCase(response)) {
+            System.out.print("Möchten Sie Unglückszahlen löschen? (Ja/Nein): ");
+            response = scanner.nextLine();
+        }
+
+        if ("Ja".equalsIgnoreCase(response)) {
+            System.out.print("Geben Sie die zu löschenden Unglückszahlen (getrennt durch Leerzeichen) ein: ");
+            String[] deleteUnluckyNumbersString = scanner.nextLine().split(" ");
+
+            for (String num : deleteUnluckyNumbersString) {
+                try {
+                    int number = Integer.parseInt(num);
+                    unluckyNumbers.remove(number);
+                } catch (NumberFormatException e) {
+                    Logger.logError("Ungültige Zahleneingabe: " + e.getMessage());
+                    System.exit(1);
+                }
+            }
+            saveUnluckyNumbersToFile(unluckyNumbers);
+        }
+    }
+
+    /**
+     * Saves the set of unlucky numbers to a file.
+     *
+     * @param unluckyNumbers Set of unlucky numbers to save.
+     */
     private static void saveUnluckyNumbersToFile(Set<Integer> unluckyNumbers) {
+        List<Integer> sortedUnluckyNumbers = new ArrayList<>(unluckyNumbers);
+        Collections.sort(sortedUnluckyNumbers);
+
         try (FileWriter writer = new FileWriter(UNLUCKY_NUMBERS_FILE_PATH)) {
-            for (int number : unluckyNumbers) {
+            for (int number : sortedUnluckyNumbers) {
                 writer.write(number + "\n");
             }
-            System.out.println("Ihre aktuelle Unglückszahlen: " + unluckyNumbers);
+            System.out.println("Ihre aktuelle Unglückszahlen: " + sortedUnluckyNumbers);
         } catch (IOException e) {
             Logger.logError("Fehler beim Speichern der Unglückszahlen in die Datei: " + e.getMessage());
         }
     }
 
+    /**
+     * Reads a set of numbers from a file.
+     *
+     * @return A set of numbers read from the file.
+     */
     public static Set<Integer> readNumbersFromFile() {
         Set<Integer> numbers = new HashSet<>();
 

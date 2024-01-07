@@ -1,6 +1,9 @@
 import java.util.Scanner;
 import java.util.Set;
 
+/**
+ * Main application class for Lotto number generation.
+ */
 public class MainApplication {
 
     public static void main(String[] args) {
@@ -14,6 +17,9 @@ public class MainApplication {
         System.out.println("Ihre aktuelle Unglückszahlen: " + unluckyNumbers);
 
         UnluckyNumbersManager.setNewUnluckyNumbers(unluckyNumbers, scanner);
+        UnluckyNumbersManager.deleteUnluckyNumbers(unluckyNumbers, scanner);
+
+        TipNumbersGenerator.generateTipSeries(args, scanner, unluckyNumbers);
     }
 
 }

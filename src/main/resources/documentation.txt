@@ -1,0 +1,49 @@
+**Dokumentation**
+
+Die Tippreihengenerator-App bietet eine einfache Möglichkeit, Lottotippreihen zu generieren, wobei der Benutzer
+die Möglichkeit hat, seine persönlichen Unglückszahlen zu verwalten.
+
+Für Anwender:
+
+1. Starten der Anwendung:
+   - Der Benutzer startet die Anwendung und wird freundlich begrüßt.
+   - Aktuelle Unglückszahlen werden angezeigt.
+
+2. Unglückszahlen verwalten:
+   - Der Benutzer kann seine Unglückszahlen aktualisieren oder löschen.
+   - Neue Unglückszahlen können eingegeben werden, und der Benutzer entscheidet, ob sie gespeichert werden sollen.
+
+3. Tippreihen generieren:
+   - Der Benutzer kann zwischen Lotto- und Eurojackpot-Tippreihen auswählen.
+   - Es werden drei Tippreihen generiert und angezeigt.
+   - Der Benutzer kann weitere Tippreihen generieren oder die Anwendung beenden.
+
+Für Programmierer:
+
+1. Hauptanwendungsklasse (MainApplication):
+   - `main`-Methode initialisiert die Anwendung und ruft Methoden von `UnluckyNumbersManager` und `TipNumbersGenerator`
+   auf.
+
+2. Tippreihengenerierungsklassen (TipNumbersGenerator, LottoTipNumbersGenerator, EurojackpotTipNumbersGenerator):
+   - Abstrakte Klasse `TipNumbersGenerator` stellt die Grundfunktionalität für die Generierung von Lottotippreihen bereit.
+   - Konkrete Klassen `LottoTipNumbersGenerator` und `EurojackpotTipNumbersGenerator` implementieren die spezifischen
+   Details für Lotto und Eurojackpot.
+
+3. Unglückszahlenverwaltungsklasse (UnluckyNumbersManager):
+   - Bietet Methoden zum Festlegen, Löschen, Speichern und Lesen von Unglückszahlen.
+   - Liest und schreibt Unglückszahlen in eine Datei.
+   - Überprüft die Gültigkeit eingegebener Zahlen.
+
+4. Logger-Klasse:
+   - `Logger` protokolliert Fehlermeldungen in einer Logdatei.
+
+5. Testklassen (MainApplicationTest, UnluckyNumbersManagerTest):
+   - Die JUnit-Tests umfassen verschiedene Szenarien für den Zahlengenerator, den Logger und das Management der
+   Unglückszahlen.
+
+Wichtige Hinweise:
+- Die Anwendung ist modular aufgebaut, um zukünftige Erweiterungen einfach zu ermöglichen.
+- Klare Trennung von Verantwortlichkeiten zwischen den Klassen für eine bessere Wartbarkeit und Erweiterbarkeit.
+- Javadoc-Kommentare für alle öffentlichen Klassen und Methoden zur besseren Dokumentation des Codes.
+- Protokollierung von Fehlern für eine einfachere Fehlerdiagnose während der Laufzeit.
+- Überprüfen, ob die Linienabdeckung verbessert werden kann, insbesondere für Randfälle und Bedingungen.

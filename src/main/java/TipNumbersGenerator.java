@@ -34,39 +34,6 @@ public abstract class TipNumbersGenerator implements NumbersGenerator {
     }
 
     /**
-     * Gets the game type (Lotto or Eurojackpot) from command line arguments or user input.
-     *
-     * @param args    Command line arguments.
-     * @param scanner Scanner for user input.
-     * @return        The selected game type.
-     */
-    private static String getGameType(String[] args, Scanner scanner) {
-        if (args.length > 0) {
-            return args[0].toLowerCase();
-        } else {
-            String gameType = "";
-
-            while (!"lotto".equals(gameType) && !"eurojackpot".equals(gameType)) {
-                System.out.print("Wählen Sie den Spieltyp (lotto/eurojackpot): ");
-                gameType = scanner.nextLine().toLowerCase();
-
-                if (gameType.isEmpty()) {
-                    gameType = "lotto";
-                }
-
-                if (!"lotto".equals(gameType) && !"eurojackpot".equals(gameType)) {
-                    String errorMessage = "Ungültiger Spieltyp: '" + gameType +
-                            "'. Verwenden Sie 'lotto' oder 'eurojackpot'.";
-                    Logger.logError(errorMessage);
-                    System.out.println(errorMessage);
-                }
-            }
-
-            return gameType;
-        }
-    }
-
-    /**
      * Generates multiple tip series based on the selected game type.
      *
      * @param args            Command line arguments.
@@ -120,4 +87,38 @@ public abstract class TipNumbersGenerator implements NumbersGenerator {
         }
         scanner.close();
     }
+
+    /**
+     * Gets the game type (Lotto or Eurojackpot) from command line arguments or user input.
+     *
+     * @param args    Command line arguments.
+     * @param scanner Scanner for user input.
+     * @return        The selected game type.
+     */
+    private static String getGameType(String[] args, Scanner scanner) {
+        if (args.length > 0) {
+            return args[0].toLowerCase();
+        } else {
+            String gameType = "";
+
+            while (!"lotto".equals(gameType) && !"eurojackpot".equals(gameType)) {
+                System.out.print("Wählen Sie den Spieltyp (lotto/eurojackpot): ");
+                gameType = scanner.nextLine().toLowerCase();
+
+                if (gameType.isEmpty()) {
+                    gameType = "lotto";
+                }
+
+                if (!"lotto".equals(gameType) && !"eurojackpot".equals(gameType)) {
+                    String errorMessage = "Ungültiger Spieltyp: '" + gameType +
+                            "'. Verwenden Sie 'lotto' oder 'eurojackpot'.";
+                    Logger.logError(errorMessage);
+                    System.out.println(errorMessage);
+                }
+            }
+
+            return gameType;
+        }
+    }
+
 }
